@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://5f74pk3hse6v"]
+
+[ext_resource type="PackedScene" uid="uid://bu23iule2mrx6" path="res://scenes/game_object/player/player.tscn" id="1_5matp"]
+[ext_resource type="PackedScene" uid="uid://dokkirpk4ew7g" path="res://scenes/game_camera/game_camera.tscn" id="1_hv14b"]
+[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="2_f7m1e"]
+[ext_resource type="Texture2D" uid="uid://b6qoldll83nyd" path="res://icon.svg" id="3_vda5s"]
+[ext_resource type="PackedScene" uid="uid://bed1k6kc47j6d" path="res://scenes/game_object/enemies/slime/slime.tscn" id="5_l11e7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15s2c"]
+size = Vector2(196, 88)
+
+[node name="Main" type="Node"]
+
+[node name="GameCamera" parent="." instance=ExtResource("1_hv14b")]
+
+[node name="BlockHeads" type="Node" parent="."]
+
+[node name="BlockHead1" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(341, 375)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead1"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead1"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="BlockHead2" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(537, 375)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead2"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead2"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="BlockHead3" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(682, 287)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead3"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead3"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="BlockHead4" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(145, 375)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead4"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead4"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="BlockHead5" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(-51, 375)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead5"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead5"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="BlockHead6" type="StaticBody2D" parent="BlockHeads"]
+position = Vector2(-247, 315)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockHeads/BlockHead6"]
+scale = Vector2(1.53125, 0.6875)
+texture = ExtResource("3_vda5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockHeads/BlockHead6"]
+shape = SubResource("RectangleShape2D_15s2c")
+
+[node name="Slimes" type="Node" parent="."]
+
+[node name="Slime" parent="Slimes" instance=ExtResource("5_l11e7")]
+position = Vector2(238, 306)
+
+[node name="Player" parent="." instance=ExtResource("1_5matp")]
+position = Vector2(126, 323)
+script = ExtResource("2_f7m1e")
