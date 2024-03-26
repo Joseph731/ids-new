@@ -86,6 +86,9 @@ shape = SubResource("RectangleShape2D_15s2c")
 [node name="Slime" parent="Slimes" instance=ExtResource("5_l11e7")]
 position = Vector2(238, 306)
 
+[node name="Slime2" parent="Slimes" instance=ExtResource("5_l11e7")]
+position = Vector2(-206, 263)
+
 [node name="Player" parent="." instance=ExtResource("1_5matp")]
 position = Vector2(126, 323)
 script = ExtResource("2_f7m1e")

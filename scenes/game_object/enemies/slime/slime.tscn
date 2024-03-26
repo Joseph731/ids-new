@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bed1k6kc47j6d"]
+[gd_scene load_steps=26 format=3 uid="uid://bed1k6kc47j6d"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemies/slime/slime.gd" id="1_i4qro"]
 [ext_resource type="Texture2D" uid="uid://wsaub3p04r5d" path="res://scenes/game_object/enemies/slime/textures/idle/idle1.png" id="2_a7nuh"]
@@ -176,9 +176,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek7jp"]
 size = Vector2(50, 43)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewaks"]
-size = Vector2(1, 1)
-
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_i4qro")
@@ -196,9 +193,21 @@ offset = Vector2(6, -25)
 position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_ek7jp")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="FloorScanner" type="RayCast2D" parent="."]
+position = Vector2(0, -1)
+target_position = Vector2(0, 1)
 
-[node name="GroundScanner" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-25, 0)
-shape = SubResource("RectangleShape2D_ewaks")
+[node name="Wander" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Rest" type="Timer" parent="."]
+one_shot = true
+
+[node name="Turn" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Jump" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
