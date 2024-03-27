@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cep64fnlavrb3"]
+
+[ext_resource type="Script" path="res://scenes/basic_attack_controller/basic_attack_controller.gd" id="1_ndf3b"]
+[ext_resource type="PackedScene" uid="uid://d33gkk24keghl" path="res://scenes/basic_attack/basic_attack.tscn" id="2_cnk5m"]
+
+[node name="BasicAttackController" type="Node"]
+script = ExtResource("1_ndf3b")
+basic_attack = ExtResource("2_cnk5m")

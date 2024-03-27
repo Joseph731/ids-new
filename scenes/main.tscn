@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://5f74pk3hse6v"]
+[gd_scene load_steps=6 format=3 uid="uid://5f74pk3hse6v"]
 
 [ext_resource type="PackedScene" uid="uid://bu23iule2mrx6" path="res://scenes/game_object/player/player.tscn" id="1_5matp"]
 [ext_resource type="PackedScene" uid="uid://dokkirpk4ew7g" path="res://scenes/game_camera/game_camera.tscn" id="1_hv14b"]
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="2_f7m1e"]
 [ext_resource type="Texture2D" uid="uid://b6qoldll83nyd" path="res://icon.svg" id="3_vda5s"]
 [ext_resource type="PackedScene" uid="uid://bed1k6kc47j6d" path="res://scenes/game_object/enemies/slime/slime.tscn" id="5_l11e7"]
 
@@ -89,6 +88,7 @@ position = Vector2(238, 306)
 [node name="Slime2" parent="Slimes" instance=ExtResource("5_l11e7")]
 position = Vector2(-206, 263)
 
+[node name="Slime3" parent="Slimes" instance=ExtResource("5_l11e7")]
+position = Vector2(236, 306)
+
 [node name="Player" parent="." instance=ExtResource("1_5matp")]
-position = Vector2(126, 323)
-script = ExtResource("2_f7m1e")

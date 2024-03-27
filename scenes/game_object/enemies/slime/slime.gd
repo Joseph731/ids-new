@@ -5,7 +5,7 @@ const GRAVITY = 2200.0
 const JUMP_VELOCITY = -600.0
 
 @onready var animation_player = $AnimationPlayer
-@onready var hitbox = $Hitbox
+@onready var collision_shape = $CollisionShape2D.get_shape().size
 @onready var floor_scanner = $FloorScanner
 @onready var wander_timer = $Wander
 @onready var rest_timer = $Rest
@@ -18,11 +18,12 @@ var direction = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hurtbox.area_entered.connect(on_area_entered)
 	wander_timer.timeout.connect(on_wander_timeout)
 	rest_timer.timeout.connect(on_rest_timeout)
 	turn_timer.timeout.connect(on_turn_timeout)
 	jump_timer.timeout.connect(on_jump_timeout)
-	floor_scanner.position.x = (hitbox.get_shape().size.x / 3) * direction #Dividing by 3 instead of 2 lets the slime go a little over the cliff
+	floor_scanner.position.x = (collision_shape.x / 3) * direction #Dividing by 3 instead of 2 lets the slime go a little over the cliff
 	floor_scanner.enabled = detects_cliffs
 
 
@@ -92,7 +93,7 @@ func set_animation(directionVal):
 func switch_direction():
 	if is_on_floor():
 		direction = -direction
-		floor_scanner.position.x = (hitbox.get_shape().size.x / 3) * direction
+		floor_scanner.position.x = (collision_shape.x / 3) * direction
 
 
 func jump():
@@ -126,3 +127,11 @@ func on_jump_timeout():
 	if rest_timer.is_stopped():
 		jump()
 	jump_timer.set_wait_time(randi_range(2,10))
+
+
+func on_area_entered(other_area: Area2D):
+	if !(other_area.owner is BasicAttack):
+		return
+	if other_area.owner.enemies_hit < other_area.owner.ENEMIES_HIT_MAX:
+		queue_free()
+		other_area.owner.enemies_hit += 1
