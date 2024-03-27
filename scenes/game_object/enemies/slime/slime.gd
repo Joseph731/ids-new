@@ -133,5 +133,6 @@ func on_area_entered(other_area: Area2D):
 	if !(other_area.owner is BasicAttack):
 		return
 	if other_area.owner.enemies_hit < other_area.owner.ENEMIES_HIT_MAX:
-		queue_free()
 		other_area.owner.enemies_hit += 1
+		GameEvents.emit_slime_killed(1.0)
+		queue_free()
