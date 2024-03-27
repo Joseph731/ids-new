@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bed1k6kc47j6d"]
+[gd_scene load_steps=29 format=3 uid="uid://bed1k6kc47j6d"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemies/slime/slime.gd" id="1_i4qro"]
 [ext_resource type="PackedScene" uid="uid://bljpmqxlc1af8" path="res://scenes/components/health_component.tscn" id="2_4q2bi"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://blrn8nj4776ih" path="res://scenes/game_object/enemies/slime/textures/death/death4.png" id="15_mgbso"]
 [ext_resource type="Texture2D" uid="uid://cw2bcq1tikxi" path="res://scenes/game_object/enemies/slime/textures/hurt/pains.png" id="16_6rarv"]
 [ext_resource type="Texture2D" uid="uid://bd0760onemphm" path="res://scenes/game_object/enemies/slime/textures/jump/jump.png" id="17_nehom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e557r"]
+size = Vector2(50, 43)
 
 [sub_resource type="Animation" id="Animation_8ej81"]
 resource_name = "walk"
@@ -184,7 +187,12 @@ script = ExtResource("1_i4qro")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_4q2bi")]
 
-[node name="HurtboxComponent" parent="." instance=ExtResource("3_q2e4h")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_q2e4h")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_e557r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
