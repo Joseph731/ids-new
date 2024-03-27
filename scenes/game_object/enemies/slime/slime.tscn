@@ -206,16 +206,16 @@ position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_ek7jp")
 
 [node name="Wander" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 11.0
 one_shot = true
 
 [node name="Rest" type="Timer" parent="."]
 one_shot = true
 
 [node name="Turn" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 6.0
 autostart = true
 
 [node name="Jump" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 6.0
 autostart = true

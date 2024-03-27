@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpt1ex8gvpdn"]
+
+[ext_resource type="Script" path="res://scenes/managers/slime_manager/slime_manager.gd" id="1_a4qm1"]
+[ext_resource type="PackedScene" uid="uid://bed1k6kc47j6d" path="res://scenes/game_object/enemies/slime/slime.tscn" id="2_xhiap"]
+
+[node name="SlimeManager" type="Node"]
+script = ExtResource("1_a4qm1")
+slime_scene = ExtResource("2_xhiap")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

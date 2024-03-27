@@ -13,9 +13,8 @@ func on_swung():
 		return
 		
 	var basic_attack_instance = basic_attack.instantiate() as Node2D
-	player.get_parent().add_child(basic_attack_instance)
+	player.add_child(basic_attack_instance)
 	
-	basic_attack_instance.global_position = player.global_position
 	basic_attack_instance.global_position.y -= player.get_node("CollisionShape2D").get_shape().size.y / 2
 	if player.get_node("Sprite2D").flip_h == true:
 		basic_attack_instance.global_position.x -= 45 
