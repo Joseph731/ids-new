@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bed1k6kc47j6d"]
+[gd_scene load_steps=28 format=3 uid="uid://bed1k6kc47j6d"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemies/slime/slime.gd" id="1_i4qro"]
+[ext_resource type="PackedScene" uid="uid://bljpmqxlc1af8" path="res://scenes/components/health_component.tscn" id="2_4q2bi"]
 [ext_resource type="Texture2D" uid="uid://wsaub3p04r5d" path="res://scenes/game_object/enemies/slime/textures/idle/idle1.png" id="2_a7nuh"]
 [ext_resource type="Texture2D" uid="uid://1utnwosbw1d4" path="res://scenes/game_object/enemies/slime/textures/walk/walk1.png" id="2_iy58p"]
 [ext_resource type="Texture2D" uid="uid://3kn4rto4dd3k" path="res://scenes/game_object/enemies/slime/textures/walk/walk2.png" id="3_nmbfx"]
+[ext_resource type="PackedScene" uid="uid://bveohsqihkynd" path="res://scenes/components/hurtbox_component.tscn" id="3_q2e4h"]
 [ext_resource type="Texture2D" uid="uid://cvprxake602yj" path="res://scenes/game_object/enemies/slime/textures/walk/walk3.png" id="4_tiiig"]
 [ext_resource type="Texture2D" uid="uid://bm1ut121qk4gy" path="res://scenes/game_object/enemies/slime/textures/walk/walk4.png" id="5_tcoiw"]
 [ext_resource type="Texture2D" uid="uid://dcpr257y3agrk" path="res://scenes/game_object/enemies/slime/textures/walk/walk5.png" id="6_hm81g"]
@@ -17,9 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://blrn8nj4776ih" path="res://scenes/game_object/enemies/slime/textures/death/death4.png" id="15_mgbso"]
 [ext_resource type="Texture2D" uid="uid://cw2bcq1tikxi" path="res://scenes/game_object/enemies/slime/textures/hurt/pains.png" id="16_6rarv"]
 [ext_resource type="Texture2D" uid="uid://bd0760onemphm" path="res://scenes/game_object/enemies/slime/textures/jump/jump.png" id="17_nehom"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek7jp"]
-size = Vector2(50, 43)
 
 [sub_resource type="Animation" id="Animation_8ej81"]
 resource_name = "walk"
@@ -176,17 +175,16 @@ _data = {
 "walk": SubResource("Animation_8ej81")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek7jp"]
+size = Vector2(50, 43)
+
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_i4qro")
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="HealthComponent" parent="." instance=ExtResource("2_4q2bi")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -22)
-shape = SubResource("RectangleShape2D_ek7jp")
+[node name="HurtboxComponent" parent="." instance=ExtResource("3_q2e4h")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

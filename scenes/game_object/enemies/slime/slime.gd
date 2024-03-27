@@ -4,6 +4,7 @@ const SPEED = 100.0
 const GRAVITY = 2200.0
 const JUMP_VELOCITY = -600.0
 
+@onready var health_component: HealthComponent = $HealthComponent
 @onready var animation_player = $AnimationPlayer
 @onready var collision_shape = $CollisionShape2D.get_shape().size
 @onready var floor_scanner = $FloorScanner
@@ -11,14 +12,16 @@ const JUMP_VELOCITY = -600.0
 @onready var rest_timer = $Rest
 @onready var turn_timer = $Turn
 @onready var jump_timer = $Jump
+
 var aggro: bool = false
 var detects_cliffs: bool = true
 var direction = -1
+var exp_given: float = 1.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Hurtbox.area_entered.connect(on_area_entered)
+	$HurtboxComponent.area_entered.connect(on_area_entered)
 	wander_timer.timeout.connect(on_wander_timeout)
 	rest_timer.timeout.connect(on_rest_timeout)
 	turn_timer.timeout.connect(on_turn_timeout)
@@ -134,5 +137,5 @@ func on_area_entered(other_area: Area2D):
 		return
 	if other_area.owner.enemies_hit < other_area.owner.ENEMIES_HIT_MAX:
 		other_area.owner.enemies_hit += 1
-		GameEvents.emit_slime_killed(1.0)
-		queue_free()
+		health_component.died.connect(other_area.get_node("../../ExperienceManager").on_died)
+		health_component.damage(100.0)
