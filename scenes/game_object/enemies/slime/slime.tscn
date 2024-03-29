@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bed1k6kc47j6d"]
+[gd_scene load_steps=30 format=3 uid="uid://bed1k6kc47j6d"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemies/slime/slime.gd" id="1_i4qro"]
 [ext_resource type="PackedScene" uid="uid://bljpmqxlc1af8" path="res://scenes/components/health_component.tscn" id="2_4q2bi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1utnwosbw1d4" path="res://scenes/game_object/enemies/slime/textures/walk/walk1.png" id="2_iy58p"]
 [ext_resource type="Texture2D" uid="uid://3kn4rto4dd3k" path="res://scenes/game_object/enemies/slime/textures/walk/walk2.png" id="3_nmbfx"]
 [ext_resource type="PackedScene" uid="uid://bveohsqihkynd" path="res://scenes/components/hurtbox_component.tscn" id="3_q2e4h"]
+[ext_resource type="PackedScene" uid="uid://dqkgo7d7smqdf" path="res://scenes/ui/enemy_health_bar/enemy_health_bar.tscn" id="4_imb0v"]
 [ext_resource type="Texture2D" uid="uid://cvprxake602yj" path="res://scenes/game_object/enemies/slime/textures/walk/walk3.png" id="4_tiiig"]
 [ext_resource type="Texture2D" uid="uid://bm1ut121qk4gy" path="res://scenes/game_object/enemies/slime/textures/walk/walk4.png" id="5_tcoiw"]
 [ext_resource type="Texture2D" uid="uid://dcpr257y3agrk" path="res://scenes/game_object/enemies/slime/textures/walk/walk5.png" id="6_hm81g"]
@@ -201,7 +202,15 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_a7nuh")
-offset = Vector2(6, -25)
+offset = Vector2(7, -25)
+
+[node name="EnemyHealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_imb0v")]
+offset_left = -30.0
+offset_top = -76.0
+offset_right = 29.0
+offset_bottom = -68.0
+value = 50.0
+health_component = NodePath("../HealthComponent")
 
 [node name="FloorScanner" type="RayCast2D" parent="."]
 position = Vector2(0, -1)
@@ -225,3 +234,7 @@ autostart = true
 [node name="Jump" type="Timer" parent="."]
 wait_time = 6.0
 autostart = true
+
+[node name="Stunned" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

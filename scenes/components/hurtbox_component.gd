@@ -22,3 +22,4 @@ func on_area_entered(other_area: Area2D):
 		if !health_component.died.is_connected(hitbox_component.get_node("../../ExperienceManager").on_died):
 			health_component.died.connect(hitbox_component.get_node("../../ExperienceManager").on_died)
 		health_component.damage(hitbox_component.damage)
+		get_parent().hurt(hitbox_component.get_node("../..").global_position.x)

@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -600.0
 @onready var rest_timer = $Rest
 @onready var turn_timer = $Turn
 @onready var jump_timer = $Jump
+@onready var stunned_timer = $Stunned
 
 var aggro: bool = false
 var detects_cliffs: bool = true
@@ -42,8 +43,8 @@ func _process(delta):
 	if (detects_cliffs and !floor_scanner.is_colliding()):
 		jump()
 	
-	if direction == 0:
-		if is_on_floor():
+	if direction == 0 || !(stunned_timer.is_stopped()):
+		if is_on_floor() || !(stunned_timer.is_stopped()):
 			velocity.x = move_toward(velocity.x, 0, 3000 * delta) #HIGH FRICTION
 		else: 
 			velocity.x = move_toward(velocity.x, 0, SPEED * 2 * delta) #LOW FRICTION
@@ -89,17 +90,33 @@ func set_animation(directionVal):
 		animation_player.play("walk")
 	if !is_on_floor():
 		animation_player.play("jump")
+	if !(stunned_timer.is_stopped()):
+		animation_player.play("hurt")
 
 
 func switch_direction():
-	if is_on_floor():
+	if is_on_floor() and stunned_timer.is_stopped():
 		direction = -direction
 		floor_scanner.position.x = (collision_shape.x / 3) * direction
 
 
 func jump():
-	if is_on_floor():
+	if is_on_floor() and stunned_timer.is_stopped():
 		velocity.y += JUMP_VELOCITY
+
+
+func hurt(attacker_global_position_x):
+		if (attacker_global_position_x < global_position.x):
+			velocity.x += 500
+			if direction == 1:
+				switch_direction()
+			print("Player left")
+		else:
+			velocity.x -= 500
+			if direction == -1:
+				switch_direction()
+			print("Player right")
+		stunned_timer.start()
 
 
 func on_wander_timeout():
