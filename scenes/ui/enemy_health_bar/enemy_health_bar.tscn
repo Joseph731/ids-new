@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://jaj1onay5e7b" path="res://scenes/ui/enemy_health_bar/enemy_hp_progress.png" id="2_hr8i2"]
 
 [node name="EnemyHealthBar" type="TextureProgressBar"]
-offset_right = 59.0
-offset_bottom = 8.0
+visible = false
+offset_right = 58.0
+offset_bottom = 9.0
 mouse_filter = 2
 nine_patch_stretch = true
 stretch_margin_left = 1

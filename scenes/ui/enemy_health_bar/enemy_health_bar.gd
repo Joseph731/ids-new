@@ -5,6 +5,8 @@ extends TextureProgressBar
 
 func _ready():
 	health_component.health_changed.connect(on_health_changed)
+	position.x -= size.x / 2
+	position.y -= 80
 	update()
 
 func update():
@@ -12,4 +14,5 @@ func update():
 
 
 func on_health_changed():
+	visible = true
 	update()
