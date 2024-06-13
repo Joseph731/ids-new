@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgynj2jfown8c"
-path="res://.godot/imported/jump_0.png-5eaff9576dc84d964e40ef5dbb812d41.ctex"
+uid="uid://c8bnqmk062f3d"
+path="res://.godot/imported/light-lefthand.png-38c66354601511e7d0f50d9bbca65ae7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/jump/jump_0.png"
-dest_files=["res://.godot/imported/jump_0.png-5eaff9576dc84d964e40ef5dbb812d41.ctex"]
+source_file="res://scenes/game_object/player/catalog/skintones/light/light-lefthand.png"
+dest_files=["res://.godot/imported/light-lefthand.png-38c66354601511e7d0f50d9bbca65ae7.ctex"]
 
 [params]
 

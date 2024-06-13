@@ -7,6 +7,18 @@ const GRAVITY = 2200.0
 const JUMP_VELOCITY = -600.0
 
 @onready var animation_player = $AnimationPlayer
+@onready var body = $CompositeSprites/Body
+@onready var top = $CompositeSprites/Top
+@onready var bottom = $CompositeSprites/Bottom
+@onready var footwear = $CompositeSprites/Footwear
+@onready var weapon = $CompositeSprites/Weapon
+@onready var arm = $CompositeSprites/Arm
+@onready var head = $CompositeSprites/Head
+@onready var face = $CompositeSprites/Face
+@onready var hair_under = $CompositeSprites/HairUnder
+@onready var hair_over = $CompositeSprites/HairOver
+@onready var right_hand = $CompositeSprites/RightHand
+@onready var left_hand = $CompositeSprites/LeftHand
 var attacking: bool
 var direction = 0
 
@@ -52,9 +64,9 @@ func set_animation(directionVal):
 			animation_player.play("stand")
 		else:
 			if directionVal == -1:
-				$Sprite2D.flip_h = 1
+				set_composite_sprites_flip_h(false)
 			else:
-				$Sprite2D.flip_h = 0
+				set_composite_sprites_flip_h(true)
 			animation_player.play("walk")
 			
 		if !is_on_floor():
@@ -62,6 +74,21 @@ func set_animation(directionVal):
 			
 	else:
 		animation_player.play("swing1")
+
+
+func set_composite_sprites_flip_h(boolVal: bool):
+	body.flip_h = boolVal
+	top.flip_h = boolVal
+	bottom.flip_h = boolVal
+	footwear.flip_h = boolVal
+	weapon.flip_h = boolVal
+	arm.flip_h = boolVal
+	head.flip_h = boolVal
+	face.flip_h = boolVal
+	hair_under.flip_h = boolVal
+	hair_over.flip_h = boolVal
+	right_hand.flip_h = boolVal
+	left_hand.flip_h = boolVal
 
 
 func jump():

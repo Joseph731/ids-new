@@ -20,7 +20,7 @@ func on_swung():
 	basic_attack_instance.hitbox_component.max_enemies_hit = max_enemies_hit
 	
 	basic_attack_instance.global_position.y -= player.get_node("CollisionShape2D").get_shape().size.y / 2
-	if player.get_node("Sprite2D").flip_h == true:
+	if player.get_node("CompositeSprites/Body").flip_h == false:
 		basic_attack_instance.global_position.x -= 45 
 	else:
 		basic_attack_instance.global_position.x += 45

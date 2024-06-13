@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c534xm4chvlc6"
-path="res://.godot/imported/swingO2_2.png-88104e701a6903669902049dbb28cba6.ctex"
+uid="uid://evrje6nwqbf5"
+path="res://.godot/imported/sandals.png-c18d020b61a126f467b3c245a4057fd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/swing1/swingO2_2.png"
-dest_files=["res://.godot/imported/swingO2_2.png-88104e701a6903669902049dbb28cba6.ctex"]
+source_file="res://scenes/game_object/player/catalog/footwear/sandals.png"
+dest_files=["res://.godot/imported/sandals.png-c18d020b61a126f467b3c245a4057fd5.ctex"]
 
 [params]
 

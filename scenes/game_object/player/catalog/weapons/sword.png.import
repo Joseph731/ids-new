@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbfx54tn2o2yl"
-path="res://.godot/imported/walk1_1.png-75bf76bfb3814d9aeb584d75e976fa57.ctex"
+uid="uid://c4n5lefwoumfy"
+path="res://.godot/imported/sword.png-77326a83d5441d3b461fcaf6fb91e1d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/walk/walk1_1.png"
-dest_files=["res://.godot/imported/walk1_1.png-75bf76bfb3814d9aeb584d75e976fa57.ctex"]
+source_file="res://scenes/game_object/player/catalog/weapons/sword.png"
+dest_files=["res://.godot/imported/sword.png-77326a83d5441d3b461fcaf6fb91e1d8.ctex"]
 
 [params]
 

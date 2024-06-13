@@ -106,17 +106,19 @@ func jump():
 
 
 func hurt(attacker_global_position_x):
-		if (attacker_global_position_x < global_position.x):
-			velocity.x += 500
-			if direction == 1:
-				switch_direction()
-			print("Player left")
-		else:
-			velocity.x -= 500
-			if direction == -1:
-				switch_direction()
-			print("Player right")
-		stunned_timer.start()
+	rest_timer.stop()
+	rest_timer.emit_signal("timeout")
+	if (attacker_global_position_x < global_position.x):
+		velocity.x += 500
+		if direction == 1:
+			switch_direction()
+		print("Player left")
+	else:
+		velocity.x -= 500
+		if direction == -1:
+			switch_direction()
+		print("Player right")
+	stunned_timer.start()
 
 
 func on_wander_timeout():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dshbqpjy0056e"
-path="res://.godot/imported/stand1_2.png-fe0acd41b7c694db33bc391e9834bca8.ctex"
+uid="uid://b0xyf5gwmw4cr"
+path="res://.godot/imported/defiant.png-bb29c536e6e5dd3fa8055b63b0860560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/stand/stand1_2.png"
-dest_files=["res://.godot/imported/stand1_2.png-fe0acd41b7c694db33bc391e9834bca8.ctex"]
+source_file="res://scenes/game_object/player/catalog/faces/defiant.png"
+dest_files=["res://.godot/imported/defiant.png-bb29c536e6e5dd3fa8055b63b0860560.ctex"]
 
 [params]
 

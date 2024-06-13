@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tqyuvqxltu3u"
-path="res://.godot/imported/stand1_1.png-e4b506c260fd13ec834d8664fe341b9b.ctex"
+uid="uid://3tk7uv00xfag"
+path="res://.godot/imported/boxers.png-e189486e97c2d07422d0a03fa207cfe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/stand/stand1_1.png"
-dest_files=["res://.godot/imported/stand1_1.png-e4b506c260fd13ec834d8664fe341b9b.ctex"]
+source_file="res://scenes/game_object/player/catalog/bottoms/boxers.png"
+dest_files=["res://.godot/imported/boxers.png-e189486e97c2d07422d0a03fa207cfe7.ctex"]
 
 [params]
 

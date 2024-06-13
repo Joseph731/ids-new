@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct4mk6khme6i1"
-path="res://.godot/imported/stand1_0.png-c076adc675232277c66fb9f6c62e39d2.ctex"
+uid="uid://bba2kmaca6j78"
+path="res://.godot/imported/toben-over.png-5d0b4e68a45bcbea231d9d7664fec2c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/stand/stand1_0.png"
-dest_files=["res://.godot/imported/stand1_0.png-c076adc675232277c66fb9f6c62e39d2.ctex"]
+source_file="res://scenes/game_object/player/catalog/hairs/toben/toben-over.png"
+dest_files=["res://.godot/imported/toben-over.png-5d0b4e68a45bcbea231d9d7664fec2c3.ctex"]
 
 [params]
 

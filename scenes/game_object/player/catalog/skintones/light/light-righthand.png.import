@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ha7a4l4wocr2"
-path="res://.godot/imported/swingO2_1.png-b2edca61a786ccf2c95e1a0794581beb.ctex"
+uid="uid://b1kq3wrxv5155"
+path="res://.godot/imported/light-righthand.png-c28718912a98d6939967d9d9e5ef197b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/swing1/swingO2_1.png"
-dest_files=["res://.godot/imported/swingO2_1.png-b2edca61a786ccf2c95e1a0794581beb.ctex"]
+source_file="res://scenes/game_object/player/catalog/skintones/light/light-righthand.png"
+dest_files=["res://.godot/imported/light-righthand.png-c28718912a98d6939967d9d9e5ef197b.ctex"]
 
 [params]
 

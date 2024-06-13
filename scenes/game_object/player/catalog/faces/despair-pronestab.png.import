@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxknxxvim7bgm"
-path="res://.godot/imported/walk1_3.png-9cd2febb0ab2a14800e67b9dcc831403.ctex"
+uid="uid://ccylsqnviuw37"
+path="res://.godot/imported/despair-pronestab.png-2b32ed9f148985c20d39337c5ad30de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/player/textures/walk/walk1_3.png"
-dest_files=["res://.godot/imported/walk1_3.png-9cd2febb0ab2a14800e67b9dcc831403.ctex"]
+source_file="res://scenes/game_object/player/catalog/faces/despair-pronestab.png"
+dest_files=["res://.godot/imported/despair-pronestab.png-2b32ed9f148985c20d39337c5ad30de4.ctex"]
 
 [params]
 
