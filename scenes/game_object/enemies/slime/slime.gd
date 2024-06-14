@@ -15,6 +15,7 @@ const JUMP_VELOCITY = -600.0
 
 var aggro: bool = false
 var detects_cliffs: bool = true
+var dying: bool = false
 var direction = -1
 var exp_given: float = 1.0
 
@@ -44,7 +45,9 @@ func _process(delta):
 		jump()
 	
 	if direction == 0 || !(stunned_timer.is_stopped()):
-		if is_on_floor() || !(stunned_timer.is_stopped()):
+		if dying:
+			velocity.x = move_toward(velocity.x, 0, 15000 * delta) #HIGH FRICTION
+		elif is_on_floor() || !(stunned_timer.is_stopped()):
 			velocity.x = move_toward(velocity.x, 0, 3000 * delta) #HIGH FRICTION
 		else: 
 			velocity.x = move_toward(velocity.x, 0, SPEED * 2 * delta) #LOW FRICTION
@@ -80,18 +83,21 @@ func get_direction_to_player():
 
 
 func set_animation(directionVal):
-	if directionVal == 0:
-		animation_player.play("idle")
+	if dying == true:
+		animation_player.play("death")
 	else:
-		if directionVal > 0:
-			$Sprite2D.flip_h = 1
+		if directionVal == 0:
+			animation_player.play("idle")
 		else:
-			$Sprite2D.flip_h = 0
-		animation_player.play("walk")
-	if !is_on_floor():
-		animation_player.play("jump")
-	if !(stunned_timer.is_stopped()):
-		animation_player.play("hurt")
+			if directionVal > 0:
+				$Sprite2D.flip_h = 1
+			else:
+				$Sprite2D.flip_h = 0
+			animation_player.play("walk")
+		if !is_on_floor():
+			animation_player.play("jump")
+		if !(stunned_timer.is_stopped()):
+			animation_player.play("hurt")
 
 
 func switch_direction():
@@ -109,12 +115,12 @@ func hurt(attacker_global_position_x):
 	rest_timer.stop()
 	rest_timer.emit_signal("timeout")
 	if (attacker_global_position_x < global_position.x):
-		velocity.x += 500
+		velocity.x = 450
 		if direction == 1:
 			switch_direction()
 		print("Player left")
 	else:
-		velocity.x -= 500
+		velocity.x = -450
 		if direction == -1:
 			switch_direction()
 		print("Player right")
@@ -147,3 +153,10 @@ func on_jump_timeout():
 	if rest_timer.is_stopped():
 		jump()
 	jump_timer.set_wait_time(randi_range(2,10))
+
+func on_died(_exp_given):
+	$EnemyHealthBar.visible = false
+	dying = true
+	$HurtboxComponent.set_collision_mask_value(2,0)
+	stunned_timer.wait_time = 1
+	stunned_timer.start()

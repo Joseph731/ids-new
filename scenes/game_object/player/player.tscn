@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bu23iule2mrx6"]
+[gd_scene load_steps=25 format=3 uid="uid://bu23iule2mrx6"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_yag2d"]
+[ext_resource type="Script" path="res://scenes/game_object/player/PlayerHealthComponent.gd" id="2_8ikud"]
 [ext_resource type="PackedScene" uid="uid://cep64fnlavrb3" path="res://scenes/basic_attack_controller/basic_attack_controller.tscn" id="2_j30e0"]
 [ext_resource type="PackedScene" uid="uid://cxyhctbtxp3vp" path="res://scenes/managers/experience_manager/experience_manager.tscn" id="2_t5nub"]
+[ext_resource type="Script" path="res://scenes/game_object/player/PlayerHurtBoxComponent.gd" id="3_pwoy7"]
 [ext_resource type="Texture2D" uid="uid://dfwqtccnug1tb" path="res://scenes/game_object/player/catalog/skintones/light/light-body.png" id="15_hfy4d"]
 [ext_resource type="Texture2D" uid="uid://bkyhooter6yfs" path="res://scenes/game_object/player/catalog/tops/undershirt.png" id="16_mit52"]
 [ext_resource type="Texture2D" uid="uid://3tk7uv00xfag" path="res://scenes/game_object/player/catalog/bottoms/boxers.png" id="17_nf0qc"]
@@ -15,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bba2kmaca6j78" path="res://scenes/game_object/player/catalog/hairs/toben/toben-over.png" id="24_oknr8"]
 [ext_resource type="Texture2D" uid="uid://b1kq3wrxv5155" path="res://scenes/game_object/player/catalog/skintones/light/light-righthand.png" id="25_tvnxx"]
 [ext_resource type="Texture2D" uid="uid://c8bnqmk062f3d" path="res://scenes/game_object/player/catalog/skintones/light/light-lefthand.png" id="26_2ke6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur007"]
+size = Vector2(20, 60)
 
 [sub_resource type="Animation" id="Animation_vllxi"]
 length = 0.001
@@ -1524,12 +1529,26 @@ _data = {
 "walk": SubResource("Animation_hph3d")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur007"]
-size = Vector2(20, 60)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 script = ExtResource("1_yag2d")
+
+[node name="PlayerHealthComponent" type="Node" parent="."]
+script = ExtResource("2_8ikud")
+
+[node name="PlayerHurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_pwoy7")
+health_component = NodePath("../PlayerHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBoxComponent"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_ur007")
+
+[node name="Invincible" type="Timer" parent="PlayerHurtBoxComponent"]
+wait_time = 1.3
+one_shot = true
 
 [node name="ExperienceManager" parent="." instance=ExtResource("2_t5nub")]
 

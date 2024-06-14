@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://5f74pk3hse6v"]
+[gd_scene load_steps=7 format=3 uid="uid://5f74pk3hse6v"]
 
 [ext_resource type="PackedScene" uid="uid://bu23iule2mrx6" path="res://scenes/game_object/player/player.tscn" id="1_5matp"]
 [ext_resource type="PackedScene" uid="uid://ctpt1ex8gvpdn" path="res://scenes/managers/slime_manager/slime_manager.tscn" id="1_7fpr6"]
 [ext_resource type="PackedScene" uid="uid://dokkirpk4ew7g" path="res://scenes/game_camera/game_camera.tscn" id="1_hv14b"]
 [ext_resource type="Texture2D" uid="uid://b6qoldll83nyd" path="res://icon.svg" id="3_vda5s"]
+[ext_resource type="PackedScene" uid="uid://gicdqgppt1dj" path="res://scenes/ui/fps_counter/fps_counter.tscn" id="5_v8aw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15s2c"]
 size = Vector2(196, 88)
@@ -86,3 +87,13 @@ shape = SubResource("RectangleShape2D_15s2c")
 
 [node name="Player" parent="." instance=ExtResource("1_5matp")]
 position = Vector2(156, 190)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="FpsCounter" parent="UI/CanvasLayer" instance=ExtResource("5_v8aw5")]

@@ -45,7 +45,7 @@ func _process(delta):
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, 3000 * delta) #HIGH FRICTION
 		else: 
-			velocity.x = move_toward(velocity.x, 0, SPEED * 2 * delta) #LOW FRICTION
+			velocity.x = move_toward(velocity.x, 0, 350 * delta) #LOW FRICTION
 	else:
 		velocity.x = direction * SPEED
 	
@@ -93,8 +93,22 @@ func set_composite_sprites_flip_h(boolVal: bool):
 
 func jump():
 	if is_on_floor():
-		velocity.y += JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY
 
 
 func finished_attack():
 	attacking = false
+
+func hurt(enemy_x_pos):
+	print($PlayerHealthComponent.current_health)
+	if is_on_floor():
+		velocity.y = -220
+	if (enemy_x_pos < global_position.x):
+		velocity.x += 190
+			
+	else:
+		velocity.x -= 190
+
+
+func on_died():
+	pass
